@@ -8,7 +8,7 @@ URL:		http://www.maui-project.org
 Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
-BuildRequires:	cmake(Qtconfiguration)
+BuildRequires:	cmake(QtConfiguration)
 BuildRequires:	pkgconfig(weston)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
