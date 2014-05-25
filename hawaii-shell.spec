@@ -17,6 +17,7 @@ BuildRequires:	pkgconfig(weston)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-server)
+BuildRequires:	pkgconfig(xkbcommon)
 
 %track
 prog %{name} = {
