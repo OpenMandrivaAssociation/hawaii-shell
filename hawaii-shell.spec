@@ -9,6 +9,7 @@ Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
 BuildRequires:	cmake(QtConfiguration)
+BuildRequires:	cmake(PolkitQt-1)
 BuildRequires:	pkgconfig(weston)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
