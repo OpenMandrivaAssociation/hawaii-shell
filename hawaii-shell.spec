@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.2.0.2
