@@ -1,13 +1,14 @@
 %define _disable_ld_no_undefined 1
+%define git 20140526
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.2.0.2
-Release:	1
+Release:	1.%{git}.1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
-Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
 BuildRequires:	cmake(QtConfiguration)
