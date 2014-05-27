@@ -1,10 +1,9 @@
 %define _disable_ld_no_undefined 1
-%define git 20140526
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.2.0.2
-Release:	1.%{git}.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
