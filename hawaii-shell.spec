@@ -19,6 +19,7 @@ BuildRequires:	cmake(QtConfiguration)
 BuildRequires:	cmake(QtAccountsService)
 BuildRequires:	pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(Qt5Compositor) >= 5.4.0
+BuildRequires:	pkgconfig(Qt5WaylandClient)
 BuildRequires:	pkgconfig(weston)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
@@ -49,7 +50,7 @@ Hawaii shell.
 %build
 export CC=gcc
 export CXX=g++
-%cmake
+%cmake -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner
 %make
 
 %install
