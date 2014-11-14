@@ -42,6 +42,8 @@ Hawaii shell.
 %setup -q
 
 %build
+export CC=gcc
+export CXX=g++
 %cmake
 %make
 
