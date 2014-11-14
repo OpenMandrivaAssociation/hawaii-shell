@@ -1,0 +1,272 @@
+From bd69713b917f53d396a15f787e67c2bb4a80383f Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Sun, 28 Sep 2014 13:00:12 +0200
+Subject: [PATCH 3/3] server: Update to Weston 1.6 API
+
+---
+ CMakeLists.txt                      |  2 +-
+ src/server/hawaii/desktop-shell.cpp | 12 +++++------
+ src/server/hawaii/screensaver.cpp   |  2 +-
+ src/server/layer.cpp                | 40 ++++++++++++++++++-------------------
+ src/server/layer.h                  |  2 +-
+ src/server/shell.cpp                |  6 +++---
+ src/server/shellsurface.cpp         |  4 ++--
+ src/server/workspace.cpp            |  2 +-
+ 8 files changed, 35 insertions(+), 35 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6c1a207..0305b8b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -92,7 +92,7 @@ pkg_check_modules(WaylandServer wayland-server REQUIRED)
+ pkg_check_modules(Pixman pixman-1 REQUIRED)
+ 
+ # Find Weston SDK
+-pkg_check_modules(Weston "weston >= 1.5.0" REQUIRED)
++pkg_check_modules(Weston "weston >= 1.6.0" REQUIRED)
+ 
+ # Find systemd
+ pkg_check_modules(systemd libsystemd-daemon)
+diff --git a/src/server/hawaii/desktop-shell.cpp b/src/server/hawaii/desktop-shell.cpp
+index 242e56d..5f22387 100644
+--- a/src/server/hawaii/desktop-shell.cpp
++++ b/src/server/hawaii/desktop-shell.cpp
+@@ -199,8 +199,8 @@ public:
+         weston_surface_set_size(surface, 8192, 8192);
+         weston_view_set_position(view, 0, 0);
+         weston_surface_set_color(surface, 0.0, 0.0, 0.0, 1.0);
+-        wl_list_insert(&m_shell->compositor()->fade_layer.view_list,
+-                       &view->layer_link);
++        wl_list_insert(&m_shell->compositor()->fade_layer.view_list.link,
++                       &view->layer_link.link);
+         pixman_region32_init(&surface->input);
+ 
+         return view;
+@@ -575,7 +575,7 @@ bool DesktopShell::isTrusted(wl_client *client, const char *interface) const
+ 
+ static void configure_static_view_no_position(weston_view *ev, Layer *layer)
+ {
+-    if (wl_list_empty(&ev->layer_link)) {
++    if (wl_list_empty(&ev->layer_link.link)) {
+         layer->addSurface(ev);
+         weston_compositor_schedule_repaint(ev->surface->compositor);
+     }
+@@ -1119,7 +1119,7 @@ void DesktopShell::configurePopup(weston_surface *es, int32_t sx, int32_t sy)
+     // Set view position
+     weston_view_set_position(view, x, y);
+ 
+-    if (wl_list_empty(&view->layer_link) || view->layer_link.next == view->layer_link.prev) {
++    if (wl_list_empty(&view->layer_link.link) || view->layer_link.link.next == view->layer_link.link.prev) {
+         layer->addSurface(view);
+         weston_compositor_schedule_repaint(es->compositor);
+     }
+@@ -1197,7 +1197,7 @@ void DesktopShell::setDialog(struct wl_client *client, struct wl_resource *resou
+ 
+         weston_view *view = container_of(es->views.next, weston_view, surface_link);
+ 
+-        if (wl_list_empty(&view->layer_link) || view->layer_link.next == view->layer_link.prev) {
++        if (wl_list_empty(&view->layer_link.link) || view->layer_link.link.next == view->layer_link.link.prev) {
+             // Create a black translucent surface to prevent underlying layers to get input events
+             if (!window->dimmedSurface()) {
+                 window->createDimmedSurface(es->output);
+@@ -1307,7 +1307,7 @@ void DesktopShell::lockSurfaceConfigure(weston_surface *es, int32_t sx, int32_t
+ {
+     weston_view *view = container_of(es->views.next, weston_view, surface_link);
+ 
+-    if (wl_list_empty(&view->layer_link) || view->layer_link.next == view->layer_link.prev) {
++    if (wl_list_empty(&view->layer_link.link) || view->layer_link.link.next == view->layer_link.link.prev) {
+         m_lockLayer.addSurface(view);
+         weston_view_update_transform(view);
+         fadeIn();
+diff --git a/src/server/hawaii/screensaver.cpp b/src/server/hawaii/screensaver.cpp
+index cc65943..d10c490 100644
+--- a/src/server/hawaii/screensaver.cpp
++++ b/src/server/hawaii/screensaver.cpp
+@@ -150,7 +150,7 @@ void ScreenSaver::configure(weston_surface *es)
+ 
+     shell->centerSurfaceOnOutput(view, es->output);
+ 
+-    if (wl_list_empty(&view->layer_link)) {
++    if (wl_list_empty(&view->layer_link.link)) {
+         shell->prependViewToLockLayer(view);
+         weston_view_update_transform(view);
+         wl_event_source_timer_update(m_timer, m_duration);
+diff --git a/src/server/layer.cpp b/src/server/layer.cpp
+index 2bbb000..3cd169a 100644
+--- a/src/server/layer.cpp
++++ b/src/server/layer.cpp
+@@ -74,7 +74,7 @@ void Layer::hide()
+ 
+ bool Layer::isVisible() const
+ {
+-    return !wl_list_empty(&m_layer.link) && !wl_list_empty(&m_layer.view_list);
++    return !wl_list_empty(&m_layer.link) && !wl_list_empty(&m_layer.view_list.link);
+ }
+ 
+ void Layer::show()
+@@ -89,10 +89,10 @@ void Layer::show()
+ 
+ void Layer::addSurface(weston_view *view)
+ {
+-    if (view->layer_link.prev) {
+-        wl_list_remove(&view->layer_link);
++    if (view->layer_link.link.prev) {
++        wl_list_remove(&view->layer_link.link);
+     }
+-    wl_list_insert(&m_layer.view_list, &view->layer_link);
++    wl_list_insert(&m_layer.view_list.link, &view->layer_link.link);
+ }
+ 
+ void Layer::addSurface(ShellSurface *surf)
+@@ -102,9 +102,9 @@ void Layer::addSurface(ShellSurface *surf)
+ 
+ void Layer::prependSurface(weston_view *view)
+ {
+-    if (view->layer_link.prev)
+-        wl_list_remove(&view->layer_link);
+-    wl_list_insert(m_layer.view_list.prev, &view->layer_link);
++    if (view->layer_link.link.prev)
++        wl_list_remove(&view->layer_link.link);
++    wl_list_insert(m_layer.view_list.link.prev, &view->layer_link.link);
+ }
+ 
+ void Layer::prependSurface(ShellSurface *surf)
+@@ -114,24 +114,24 @@ void Layer::prependSurface(ShellSurface *surf)
+ 
+ void Layer::stackAbove(weston_view *surf, weston_view *parent)
+ {
+-    wl_list_remove(&surf->layer_link);
+-    wl_list_init(&surf->layer_link);
++    wl_list_remove(&surf->layer_link.link);
++    wl_list_init(&surf->layer_link.link);
+ 
+-    wl_list_insert(parent->layer_link.prev, &surf->layer_link);
++    wl_list_insert(parent->layer_link.link.prev, &surf->layer_link.link);
+ }
+ 
+ void Layer::stackBelow(weston_view *surf, weston_view *parent)
+ {
+-    wl_list_remove(&surf->layer_link);
+-    wl_list_init(&surf->layer_link);
++    wl_list_remove(&surf->layer_link.link);
++    wl_list_init(&surf->layer_link.link);
+ 
+-    wl_list_insert(parent->layer_link.prev->prev, &surf->layer_link);
++    wl_list_insert(parent->layer_link.link.prev->prev, &surf->layer_link.link);
+ }
+ 
+ void Layer::restack(weston_view *view)
+ {
+-    wl_list_remove(&view->layer_link);
+-    wl_list_insert(&m_layer.view_list, &view->layer_link);
++    wl_list_remove(&view->layer_link.link);
++    wl_list_insert(&m_layer.view_list.link, &view->layer_link.link);
+     weston_view_damage_below(view);
+     weston_surface_damage(view->surface);
+ }
+@@ -143,25 +143,25 @@ void Layer::restack(ShellSurface *surf)
+ 
+ bool Layer::isEmpty() const
+ {
+-    return wl_list_empty(&m_layer.view_list);
++    return wl_list_empty(&m_layer.view_list.link);
+ }
+ 
+ int Layer::numberOfSurfaces() const
+ {
+-    return wl_list_length(&m_layer.view_list);
++    return wl_list_length(&m_layer.view_list.link);
+ }
+ 
+ Layer::iterator Layer::begin() const
+ {
+-    return iterator(&m_layer.view_list, m_layer.view_list.next, false);
++    return iterator(&m_layer.view_list.link, m_layer.view_list.link.next, false);
+ }
+ 
+ Layer::iterator Layer::rbegin() const
+ {
+-    return iterator(&m_layer.view_list, m_layer.view_list.prev, true);
++    return iterator(&m_layer.view_list.link, m_layer.view_list.link.prev, true);
+ }
+ 
+ Layer::iterator Layer::end() const
+ {
+-    return iterator(&m_layer.view_list, &m_layer.view_list, false);
++    return iterator(&m_layer.view_list.link, &m_layer.view_list.link, false);
+ }
+diff --git a/src/server/layer.h b/src/server/layer.h
+index d927cce..277eb41 100644
+--- a/src/server/layer.h
++++ b/src/server/layer.h
+@@ -126,7 +126,7 @@ template<class L, class S>
+ S *Layer::Iterator<L, S>::deref() const
+ {
+     if (m_elm) {
+-        return container_of(m_elm, weston_view, layer_link);
++        return container_of(m_elm, weston_view, layer_link.link);
+     } else {
+         return nullptr;
+     }
+diff --git a/src/server/shell.cpp b/src/server/shell.cpp
+index 631880c..13a7008 100644
+--- a/src/server/shell.cpp
++++ b/src/server/shell.cpp
+@@ -431,7 +431,7 @@ void Shell::configureSurface(ShellSurface *surface, int32_t sx, int32_t sy)
+                 surface->m_workspace = 0;
+             }
+             surface->view()->output = surface->m_parent->output;
+-            wl_list_insert(defaultView(surface->m_parent)->layer_link.prev, &surface->view()->layer_link);
++            wl_list_insert(defaultView(surface->m_parent)->layer_link.link.prev, &surface->view()->layer_link.link);
+         } else if (surface->m_type == ShellSurface::Type::TopLevel && surface->m_state.fullscreen) {
+             stackFullscreen(surface);
+             configureFullscreen(surface);
+@@ -720,7 +720,7 @@ static void configure_static_surface(struct weston_surface *es, Layer *layer)
+ 
+     weston_view_set_position(view, view->geometry.x, view->geometry.y);
+ 
+-    if (wl_list_empty(&view->layer_link) || view->layer_link.next == view->layer_link.prev) {
++    if (wl_list_empty(&view->layer_link.link) || view->layer_link.link.next == view->layer_link.link.prev) {
+         layer->addSurface(view);
+         weston_compositor_schedule_repaint(es->compositor);
+     }
+@@ -758,7 +758,7 @@ void Shell::panelConfigure(weston_surface *es, int32_t sx, int32_t sy, PanelPosi
+     }
+     weston_view_set_position(view, x, y);
+ 
+-    if (wl_list_empty(&view->layer_link) || view->layer_link.next == view->layer_link.prev) {
++    if (wl_list_empty(&view->layer_link.link) || view->layer_link.link.next == view->layer_link.link.prev) {
+         m_panelsLayer.addSurface(view);
+         weston_compositor_schedule_repaint(es->compositor);
+     }
+diff --git a/src/server/shellsurface.cpp b/src/server/shellsurface.cpp
+index c355c9d..79f4374 100644
+--- a/src/server/shellsurface.cpp
++++ b/src/server/shellsurface.cpp
+@@ -208,8 +208,8 @@ void ShellSurface::show()
+ 
+ void ShellSurface::hide()
+ {
+-    wl_list_remove(&m_view->layer_link);
+-    wl_list_init(&m_view->layer_link);
++    wl_list_remove(&m_view->layer_link.link);
++    wl_list_init(&m_view->layer_link.link);
+ }
+ 
+ bool ShellSurface::updateType()
+diff --git a/src/server/workspace.cpp b/src/server/workspace.cpp
+index e07ff12..bd8da25 100644
+--- a/src/server/workspace.cpp
++++ b/src/server/workspace.cpp
+@@ -100,7 +100,7 @@ void Workspace::removeSurface(ShellSurface *surface)
+     if (surface->transformParent() == m_rootSurface) {
+         weston_view_set_transform_parent(surface->view(), nullptr);
+     }
+-    wl_list_remove(&surface->view()->layer_link);
++    wl_list_remove(&surface->view()->layer_link.link);
+     surface->m_workspace = nullptr;
+ }
+ 
+-- 
+2.1.0
+

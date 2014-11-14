@@ -1,0 +1,74 @@
+From c8b678f9bccf8a8d9a399eb29b1b2d669d0e04c7 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Sun, 28 Sep 2014 12:59:24 +0200
+Subject: [PATCH 2/3] Specify protocol versions
+
+QtWayland 5.4 API needs that.
+---
+ src/client/registrylistener.cpp                 | 6 +++---
+ src/daemons/notifications/registrylistener.cpp  | 2 +-
+ src/declarative/components/registrylistener.cpp | 2 +-
+ src/screensaver/screensavercontroller.cpp       | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/client/registrylistener.cpp b/src/client/registrylistener.cpp
+index 8c97753..3438e51 100644
+--- a/src/client/registrylistener.cpp
++++ b/src/client/registrylistener.cpp
+@@ -80,11 +80,11 @@ void RegistryListener::handleGlobal(void *data,
+     }
+ 
+     if (strcmp(interface, "hawaii_shell") == 0)
+-        self->shell->init(registry, id);
++        self->shell->init(registry, id, 1);
+     else if (strcmp(interface, "hawaii_shell_surface") == 0)
+-        self->shellSurface->init(registry, id);
++        self->shellSurface->init(registry, id, 1);
+     else if (strcmp(interface, "hawaii_panel_manager") == 0)
+-        self->panelManager->init(registry, id);
++        self->panelManager->init(registry, id, 1);
+ }
+ 
+ void RegistryListener::handleGlobalRemove(void *data,
+diff --git a/src/daemons/notifications/registrylistener.cpp b/src/daemons/notifications/registrylistener.cpp
+index e832847..00de6c3 100644
+--- a/src/daemons/notifications/registrylistener.cpp
++++ b/src/daemons/notifications/registrylistener.cpp
+@@ -89,7 +89,7 @@ void RegistryListener::handleGlobal(void *data,
+ 
+     if (strcmp(interface, "wl_notification_daemon") == 0) {
+         // Initialize interface
+-        self->m_notifications->init(registry, id);
++        self->m_notifications->init(registry, id, 1);
+ 
+         // Start the notifications daemon and connect to the session bus
+         NotificationsDaemon *daemon = NotificationsDaemon::instance();
+diff --git a/src/declarative/components/registrylistener.cpp b/src/declarative/components/registrylistener.cpp
+index 744d336..20be68f 100644
+--- a/src/declarative/components/registrylistener.cpp
++++ b/src/declarative/components/registrylistener.cpp
+@@ -83,7 +83,7 @@ void RegistryListener::handleGlobal(void *data,
+     }
+ 
+     if (strcmp(interface, "hawaii_shell_surface") == 0)
+-        self->m_shellSurface->init(registry, id);
++        self->m_shellSurface->init(registry, id, 1);
+ }
+ 
+ void RegistryListener::handleGlobalRemove(void *data,
+diff --git a/src/screensaver/screensavercontroller.cpp b/src/screensaver/screensavercontroller.cpp
+index 97fc5a2..cfc2b5e 100644
+--- a/src/screensaver/screensavercontroller.cpp
++++ b/src/screensaver/screensavercontroller.cpp
+@@ -151,7 +151,7 @@ void ScreenSaverController::handleGlobal(void *data,
+     }
+ 
+     if (strcmp(interface, "wl_screensaver") == 0) {
+-        self->m_screensaver->init(registry, id);
++        self->m_screensaver->init(registry, id, 1);
+         QMetaObject::invokeMethod(self, "run", Qt::QueuedConnection);
+     }
+ }
+-- 
+2.1.0
+
