@@ -25,12 +25,16 @@ BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xkbcommon)
+BuildRequires:	pkgconfig(systemd)
+BuildRequires:	pkgconfig(libsystemd-daemon)
+#BuildRequires:  greenisland-devel
 
-Requires:		weston
-Requires:		dbus-x11
-Requires:		hawaii-widget-styles >= 0.3.0
-Requires:		greenisland >= 0.3.0
-Requires:		fluid >= 0.3.0
+Requires:	weston
+Requires:	dbus-x11
+Requires:	hawaii-widget-styles >= 0.3.0
+Requires:	greenisland >= 0.3.0
+Requires:	fluid >= 0.3.0
+Requires(post,postun,preun):	rpm-helper
 
 %track
 prog %{name} = {
@@ -56,4 +60,52 @@ export CXX=g++
 %install
 %makeinstall_std -C build
 
+%post
+%systemd_post hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
+
+%postun
+%systemd_postun hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
+
+%preun
+%systemd_preun
+
 %files
+%dir %{_libdir}/hawaii/qml/Hawaii/Shell
+%dir %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.gradient
+%dir %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.solid
+%dir %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.wallpaper
+%dir %{_datadir}/hawaii/containments/org.hawaii.containments.desktop
+%dir %{_datadir}/hawaii/containments/org.hawaii.containments.panel
+%dir %{_datadir}/hawaii/elements/org.hawaii.elements.appchooser
+%dir %{_datadir}/hawaii/elements/org.hawaii.elements.indicators
+%dir %{_datadir}/hawaii/elements/org.hawaii.elements.spacer
+%dir %{_datadir}/hawaii/shells/org.hawaii.shells.desktop
+%dir %{_datadir}/hawaii/shells/org.hawaii.shells.tablet
+%dir %{_datadir}/hawaii/elements/org.hawaii.elements.launcher
+%dir %{_datadir}/hawaii/styles/Aluminium
+%dir %{_datadir}/hawaii/styles/Flat
+%{_bindir}/hawaii*
+%{_libdir}/systemd/user/hawaii-*.service
+%{_libdir}/systemd/user/hawaii.target
+%{_libdir}/hawaii/plugins/dataproviders/libhawaiidatetime.so
+%{_libdir}/hawaii/plugins/dataproviders/libhawaiimixer.so
+%{_libdir}/hawaii/plugins/platformthemes/hawaii.so
+%{_libdir}/hawaii/qml/Hawaii/Shell/*
+%{_libdir}/weston/hawaii-desktop.so
+%{_libdir}exec/hawaii-screensaver
+%{_libdir}exec/hawaii-shell-client
+%{_libdir}exec/starthawaii
+%{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.gradient/*
+%{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.solid/*
+%{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.wallpaper/*
+%{_datadir}/hawaii/containments/org.hawaii.containments.desktop/*
+%{_datadir}/hawaii/containments/org.hawaii.containments.panel/*
+%{_datadir}/hawaii/elements/org.hawaii.elements.appchooser/*
+%{_datadir}/hawaii/elements/org.hawaii.elements.indicators/*
+%{_datadir}/hawaii/elements/org.hawaii.elements.launcher/*
+%{_datadir}/hawaii/elements/org.hawaii.elements.spacer/*
+%{_datadir}/hawaii/shells/org.hawaii.shells.desktop/*
+%{_datadir}/hawaii/shells/org.hawaii.shells.tablet/*
+%{_datadir}/hawaii/styles/Aluminium/*
+%{_datadir}/hawaii/styles/Flat/*
+%{_datadir}/wayland-sessions/hawaii.desktop
