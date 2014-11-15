@@ -85,16 +85,16 @@ export CXX=g++
 %dir %{_datadir}/hawaii/styles/Aluminium
 %dir %{_datadir}/hawaii/styles/Flat
 %{_bindir}/hawaii*
-%{_libdir}/systemd/user/hawaii-*.service
-%{_libdir}/systemd/user/hawaii.target
+%{_prefix}/lib/systemd/user/hawaii-*.service
+%{_prefix}/lib/systemd/user/hawaii.target
 %{_libdir}/hawaii/plugins/dataproviders/libhawaiidatetime.so
 %{_libdir}/hawaii/plugins/dataproviders/libhawaiimixer.so
 %{_libdir}/hawaii/plugins/platformthemes/hawaii.so
 %{_libdir}/hawaii/qml/Hawaii/Shell/*
 %{_libdir}/weston/hawaii-desktop.so
-%{_libdir}exec/hawaii-screensaver
-%{_libdir}exec/hawaii-shell-client
-%{_libdir}exec/starthawaii
+%{_libexecdir}/hawaii-screensaver
+%{_libexecdir}/hawaii-shell-client
+%{_libexecdir}/starthawaii
 %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.gradient/*
 %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.solid/*
 %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.wallpaper/*
