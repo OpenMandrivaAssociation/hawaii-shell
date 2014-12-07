@@ -4,7 +4,7 @@
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.3.0
-Release:	4
+Release:	5
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
@@ -54,7 +54,7 @@ Hawaii shell.
 %build
 export CC=gcc
 export CXX=g++
-%cmake -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner
+%cmake_qt5 -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner
 %make
 
 %install
