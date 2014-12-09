@@ -22,6 +22,7 @@ BuildRequires:	cmake(KF5Runner)
 BuildRequires:	cmake(KF5KDELibs4Support)
 BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5PlasmaQuick)
+BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:	pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
