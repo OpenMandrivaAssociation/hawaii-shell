@@ -4,7 +4,7 @@
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.5.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
@@ -78,7 +78,7 @@ Hawaii theme for SDDM display manager.
 
 %post
 %systemd_post hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
-%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop default.desktop %{_datadir}/custom-xsessions/hawaii.desktop 11
+%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop default.desktop %{_datadir}/xsessions/hawaii.desktop 11
 
 %postun
 %systemd_postun hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
@@ -86,7 +86,7 @@ Hawaii theme for SDDM display manager.
 %preun
 %systemd_preun
 if [ $1 -eq 0 ]; then
-    %{_sbindir}/update-alternatives --remove default.desktop %{_datadir}/custom-xsessions/hawaii.desktop
+    %{_sbindir}/update-alternatives --remove default.desktop %{_datadir}/xsessions/hawaii.desktop
 fi
 
 
