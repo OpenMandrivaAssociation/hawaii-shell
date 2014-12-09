@@ -3,14 +3,12 @@
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.3.0
-Release:	8
+Version:	0.5.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
 Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.gz
-Patch0:		0002-Specify-protocol-versions.patch
-Patch1:		0003-server-Update-to-Weston-1.6-API.patch
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
 BuildRequires:	libhawaii-devel
@@ -52,13 +50,9 @@ Hawaii shell.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
-export CC=gcc
-export CXX=g++
-%cmake_qt5 -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DCMAKE_BUILD_TYPE=RelWithDebInfo
+%cmake_qt5 -DENABLE_SYSTEMD:ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DCMAKE_BUILD_TYPE=RelWithDebInfo
 %make
 
 %install
