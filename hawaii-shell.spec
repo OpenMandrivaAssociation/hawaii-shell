@@ -15,6 +15,7 @@ BuildRequires:	libhawaii-devel
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	cmake(QtConfiguration)
 BuildRequires:	cmake(QtAccountsService)
+BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
