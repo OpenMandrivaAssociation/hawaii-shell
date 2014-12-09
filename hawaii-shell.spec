@@ -136,6 +136,7 @@ fi
 %{_datadir}/plasma/shells/org.hawaii.shells.desktop/contents/*
 %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.*/metadata.desktop
 %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.*/contents/*
+%{_datadir}/wayland-sessions/hawaii.desktop
 %{_datadir}/xsessions/hawaii.desktop
 
 %files sddm-theme
