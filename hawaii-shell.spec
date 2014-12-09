@@ -52,7 +52,7 @@ Hawaii shell.
 %setup -q
 
 %build
-%cmake_qt5 -DENABLE_SYSTEMD:ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DCMAKE_BUILD_TYPE=RelWithDebInfo
+%cmake_qt5 -DENABLE_SYSTEMD:BOOL=ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DCMAKE_BUILD_TYPE=RelWithDebInfo
 %make
 
 %install
