@@ -45,6 +45,7 @@ Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
 Requires:	%{_lib}qt5dbus5
 Requires(post,postun,preun):	rpm-helper
+Requires(post,preun):	update-alternatives
 
 %track
 prog %{name} = {
@@ -55,6 +56,15 @@ prog %{name} = {
 
 %description
 Hawaii shell.
+
+%package sddm-theme
+Summary:	Hawaii theme for SDDM
+Group:		Graphical desktop/Other
+Requires:	sddm
+Requires:	hawaii-shell = %{EVRD}
+
+%description sddm-theme
+Hawaii theme for SDDM display manager.
 
 %prep
 %setup -q
@@ -68,50 +78,70 @@ Hawaii shell.
 
 %post
 %systemd_post hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
+%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop default.desktop %{_datadir}/custom-xsessions/hawaii.desktop 11
 
 %postun
 %systemd_postun hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
 
 %preun
 %systemd_preun
+if [ $1 -eq 0 ]; then
+    %{_sbindir}/update-alternatives --remove default.desktop %{_datadir}/custom-xsessions/hawaii.desktop
+fi
+
 
 %files
-%dir %{_libdir}/hawaii/qml/Hawaii/Shell
-%dir %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.gradient
-%dir %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.solid
-%dir %{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.wallpaper
-%dir %{_datadir}/hawaii/containments/org.hawaii.containments.desktop
-%dir %{_datadir}/hawaii/containments/org.hawaii.containments.panel
-%dir %{_datadir}/hawaii/elements/org.hawaii.elements.appchooser
-%dir %{_datadir}/hawaii/elements/org.hawaii.elements.indicators
-%dir %{_datadir}/hawaii/elements/org.hawaii.elements.spacer
-%dir %{_datadir}/hawaii/shells/org.hawaii.shells.desktop
-%dir %{_datadir}/hawaii/shells/org.hawaii.shells.tablet
-%dir %{_datadir}/hawaii/elements/org.hawaii.elements.launcher
-%dir %{_datadir}/hawaii/styles/Aluminium
-%dir %{_datadir}/hawaii/styles/Flat
+%dir %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop
+%dir %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/contents
+%dir %{_datadir}/plasma/plasmoids/org.hawaii.appchooser
+%dir %{_datadir}/plasma/plasmoids/org.hawaii.appchooser/contents
+%dir %{_datadir}/plasma/plasmoids/org.hawaii.notifications
+%dir %{_datadir}/plasma/plasmoids/org.hawaii.notifications/contents
+%dir %{_datadir}/plasma/shells/org.hawaii.shells.desktop
+%dir %{_datadir}/plasma/shells/org.hawaii.shells.desktop/contents
+%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.gradient
+%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.gradient/contents
+%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.solid
+%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.solid/contents
+%dir %{_libdir}/qml/org/hawaii
+%{_prefix}/etc/xdg/autostart/hawaii-shell-desktop.desktop
+%{_prefix}/etc/xdg/menus/hawaii-applications.menu
+%{_prefix}/etc/xdg/plasma-workspace/env/hawaii.sh
 %{_bindir}/hawaii*
+%{_bindir}/ksetcursortheme
+%{_bindir}/ksetdefaultsettings
 %{_prefix}/lib/systemd/user/hawaii-*.service
 %{_prefix}/lib/systemd/user/hawaii.target
-%{_libdir}/hawaii/plugins/dataproviders/libhawaiidatetime.so
-%{_libdir}/hawaii/plugins/dataproviders/libhawaiimixer.so
-%{_libdir}/hawaii/plugins/platformthemes/hawaii.so
-%{_libdir}/hawaii/qml/Hawaii/Shell/*
-%{_libdir}/weston/hawaii-desktop.so
-%{_libexecdir}/hawaii-screensaver
-%{_libexecdir}/hawaii-shell-client
-%{_libexecdir}/starthawaii
-%{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.gradient/*
-%{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.solid/*
-%{_datadir}/hawaii/backgrounds/org.hawaii.backgrounds.wallpaper/*
-%{_datadir}/hawaii/containments/org.hawaii.containments.desktop/*
-%{_datadir}/hawaii/containments/org.hawaii.containments.panel/*
-%{_datadir}/hawaii/elements/org.hawaii.elements.appchooser/*
-%{_datadir}/hawaii/elements/org.hawaii.elements.indicators/*
-%{_datadir}/hawaii/elements/org.hawaii.elements.launcher/*
-%{_datadir}/hawaii/elements/org.hawaii.elements.spacer/*
-%{_datadir}/hawaii/shells/org.hawaii.shells.desktop/*
-%{_datadir}/hawaii/shells/org.hawaii.shells.tablet/*
-%{_datadir}/hawaii/styles/Aluminium/*
-%{_datadir}/hawaii/styles/Flat/*
-%{_datadir}/wayland-sessions/hawaii.desktop
+%{_prefix}/lib/systemd/user/baloo_file.service
+%{_prefix}/lib/systemd/user/kdeinit5.service
+%{_prefix}/lib/systemd/user/krunner.service
+%{_prefix}/lib/systemd/user/ksmserver5.service
+%{_prefix}/lib/systemd/user/kwin_x11.service
+%{_prefix}/lib/systemd/user/plasma-desktop-shell.service
+%{_prefix}/lib/systemd/user/plasma5.target
+%{_libdir}/qml/org/hawaii/appchooser/private/libappchooserplugin.so
+%{_libdir}/qml/org/hawaii/appchooser/private/qmldir
+%{_libdir}/qml/org/hawaii/private/notifications/libnotificationshelperplugin.so
+%{_libdir}/qml/org/hawaii/private/notifications/qmldir
+%{_datadir}/kservices5/plasma-*org.hawaii.*.desktop
+%{_datadir}/desktop-directories/hawaii-*.directory
+%{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/contents/*
+%{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/metadata.desktop
+%{_datadir}/plasma/plasmoids/org.hawaii.appchooser/metadata.desktop
+%{_datadir}/plasma/plasmoids/org.hawaii.appchooser/contents/*
+%{_datadir}/plasma/plasmoids/org.hawaii.notifications/contents/*
+%{_datadir}/plasma/shells/org.hawaii.shells.desktop/metadata.desktop
+%{_datadir}/plasma/shells/org.hawaii.shells.desktop/contents/*
+%{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.*/metadata.desktop
+%{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.*/contents/*
+%{_datadir}/xsessions/hawaii.desktop
+
+%files hawaii-sddm-theme
+%dir %{_datadir}/sddm/themes/mauiproject
+%dir %{_datadir}/sddm/themes/mauiproject/components
+%{_datadir}/sddm/themes/mauiproject/README
+%{_datadir}/sddm/themes/mauiproject/*.qml
+%{_datadir}/sddm/themes/mauiproject/*.png
+%{_datadir}/sddm/themes/mauiproject/*.conf
+%{_datadir}/sddm/themes/mauiproject/*.desktop
+%{_datadir}/sddm/themes/mauiproject/components/*
