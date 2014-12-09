@@ -104,10 +104,13 @@ fi
 %dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.solid
 %dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.solid/contents
 %dir %{_libdir}/qml/org/hawaii
+%dir %{_libdir}/qml/org/hawaii/appchooser
+%dir %{_libdir}/qml/org/hawaii/appchooser/private
+%dir %{_libdir}/qml/org/hawaii/private
+%dir %{_libdir}/qml/org/hawaii/private/notifications
 %{_prefix}/etc/xdg/autostart/hawaii-shell-desktop.desktop
 %{_prefix}/etc/xdg/menus/hawaii-applications.menu
 %{_prefix}/etc/xdg/plasma-workspace/env/hawaii.sh
-%{_bindir}/hawaii*
 %{_bindir}/ksetcursortheme
 %{_bindir}/ksetdefaultsettings
 %{_prefix}/lib/systemd/user/hawaii-*.service
@@ -119,16 +122,15 @@ fi
 %{_prefix}/lib/systemd/user/kwin_x11.service
 %{_prefix}/lib/systemd/user/plasma-desktop-shell.service
 %{_prefix}/lib/systemd/user/plasma5.target
-%{_libdir}/qml/org/hawaii/appchooser/private/libappchooserplugin.so
-%{_libdir}/qml/org/hawaii/appchooser/private/qmldir
-%{_libdir}/qml/org/hawaii/private/notifications/libnotificationshelperplugin.so
-%{_libdir}/qml/org/hawaii/private/notifications/qmldir
+%{_libdir}/qml/org/hawaii/appchooser/private/*
+%{_libdir}/qml/org/hawaii/private/notifications/*
 %{_datadir}/kservices5/plasma-*org.hawaii.*.desktop
 %{_datadir}/desktop-directories/hawaii-*.directory
 %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/contents/*
 %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/metadata.desktop
 %{_datadir}/plasma/plasmoids/org.hawaii.appchooser/metadata.desktop
 %{_datadir}/plasma/plasmoids/org.hawaii.appchooser/contents/*
+%{_datadir}/plasma/plasmoids/org.hawaii.notifications/metadata.desktop
 %{_datadir}/plasma/plasmoids/org.hawaii.notifications/contents/*
 %{_datadir}/plasma/shells/org.hawaii.shells.desktop/metadata.desktop
 %{_datadir}/plasma/shells/org.hawaii.shells.desktop/contents/*
@@ -136,7 +138,7 @@ fi
 %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.*/contents/*
 %{_datadir}/xsessions/hawaii.desktop
 
-%files hawaii-sddm-theme
+%files sddm-theme
 %dir %{_datadir}/sddm/themes/mauiproject
 %dir %{_datadir}/sddm/themes/mauiproject/components
 %{_datadir}/sddm/themes/mauiproject/README
