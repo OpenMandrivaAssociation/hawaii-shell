@@ -4,7 +4,7 @@
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.5.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
@@ -44,6 +44,7 @@ Requires:	%{_lib}qt5gui5-x11
 Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
 Requires:	%{_lib}qt5dbus5
+Requires:	plasma-workspace
 Requires(post,postun,preun):	rpm-helper
 Requires(post,preun):	update-alternatives
 
