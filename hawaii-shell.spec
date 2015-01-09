@@ -91,7 +91,6 @@ if [ $1 -eq 0 ]; then
     %{_sbindir}/update-alternatives --remove default.desktop %{_datadir}/xsessions/hawaii.desktop
 fi
 
-
 %files
 %dir %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop
 %dir %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/contents
@@ -110,9 +109,9 @@ fi
 %dir %{_libdir}/qml/org/hawaii/appchooser/private
 %dir %{_libdir}/qml/org/hawaii/private
 %dir %{_libdir}/qml/org/hawaii/private/notifications
-%{_prefix}/etc/xdg/autostart/hawaii-shell-desktop.desktop
-%{_prefix}/etc/xdg/menus/hawaii-applications.menu
-%{_prefix}/etc/xdg/plasma-workspace/env/hawaii.sh
+%{_sysconfdir}/xdg/autostart/hawaii-shell-desktop.desktop
+%{_sysconfdir}/xdg/menus/hawaii-applications.menu
+%{_sysconfdir}/xdg/plasma-workspace/env/hawaii.sh
 %{_bindir}/ksetcursortheme
 %{_bindir}/ksetdefaultsettings
 %{_prefix}/lib/systemd/user/hawaii-*.service
