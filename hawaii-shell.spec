@@ -4,7 +4,7 @@
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.5.0
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
