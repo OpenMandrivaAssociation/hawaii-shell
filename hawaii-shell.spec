@@ -3,8 +3,8 @@
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.5.0
-Release:	7
+Version:	0.3.90
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
@@ -16,16 +16,28 @@ BuildRequires:	pkgconfig(alsa)
 BuildRequires:	cmake(QtConfiguration)
 BuildRequires:	cmake(QtAccountsService)
 BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5CoreAddons)
+BuildRequires:	cmake(KF5KIO)
 BuildRequires:	cmake(KF5Plasma)
 BuildRequires:	cmake(KF5Solid)
 BuildRequires:	cmake(KF5Runner)
+BuildRequires:	cmake(KF5Service)
+BuildRequires:	cmake(KF5Wayland)
 BuildRequires:	cmake(KF5KDELibs4Support)
 BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5PlasmaQuick)
 BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:	pkgconfig(polkit-qt5-1)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5DBus)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Qml)
+BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
+BuildRequires:	pkgconfig(qt5xdg)
 BuildRequires:	pkgconfig(weston)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
@@ -33,6 +45,7 @@ BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
+BuildRequires:	pkgconfig(libqtxdg)
 #BuildRequires:  greenisland-devel
 
 Requires:	weston
@@ -73,7 +86,7 @@ Hawaii theme for SDDM display manager.
 %setup -q
 
 %build
-%cmake_qt5 -DENABLE_SYSTEMD:BOOL=ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DCMAKE_BUILD_TYPE=RelWithDebInfo
+%cmake_qt5 -DENABLE_SYSTEMD:BOOL=ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DENABLE_MAINLINE_QTXDG:BOOL=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
 %make
 
 %install
