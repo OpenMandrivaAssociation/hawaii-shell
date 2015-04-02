@@ -26,7 +26,7 @@ BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
-BuildRequires:	pkgconfig(qt5xdg)
+BuildRequires:	pkgconfig(Qt5Xdg)
 BuildRequires:	pkgconfig(weston)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
