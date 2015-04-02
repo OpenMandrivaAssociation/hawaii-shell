@@ -41,6 +41,7 @@ BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
+BuildRequires:	pam-devel
 
 Requires:	weston
 Requires:	dbus-x11
