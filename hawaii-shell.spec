@@ -40,7 +40,6 @@ Requires:	weston
 Requires:	dbus-x11
 Requires:	hawaii-widget-styles >= 0.4.0
 #Requires:	greenisland >= 0.3.0
-#Requires:	fluid >= 0.3.0
 Requires:	%{_lib}qt5gui5-x11
 Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
