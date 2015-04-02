@@ -100,53 +100,98 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files
-%dir %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop
-%dir %{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/contents
-%dir %{_datadir}/plasma/plasmoids/org.hawaii.appchooser
-%dir %{_datadir}/plasma/plasmoids/org.hawaii.appchooser/contents
-%dir %{_datadir}/plasma/plasmoids/org.hawaii.notifications
-%dir %{_datadir}/plasma/plasmoids/org.hawaii.notifications/contents
-%dir %{_datadir}/plasma/shells/org.hawaii.shells.desktop
-%dir %{_datadir}/plasma/shells/org.hawaii.shells.desktop/contents
-%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.gradient
-%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.gradient/contents
-%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.solid
-%dir %{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.solid/contents
-%dir %{_libdir}/qml/org/hawaii
+%dir %{_sysconfdir}/xdg/hawaii
+%dir %{_libdir}/qml/Hawaii
+%dir %{_libdir}/qml/Hawaii/Components
+%dir %{_libdir}/qml/Hawaii/Components/ListItems
+%dir %{_libdir}/qml/Hawaii/Controls/
+%dir %{_libdir}/qml/Hawaii/Effects
+%dir %{_libdir}/qml/Hawaii/Themes
+%dir %{_libdir}/qml/QtQuick/Controls/Styles/Wind/
+%dir %{_libdir}/qml/QtQuick/Controls/Styles/Wind/images
 %dir %{_libdir}/qml/org/hawaii/appchooser
-%dir %{_libdir}/qml/org/hawaii/appchooser/private
-%dir %{_libdir}/qml/org/hawaii/private
-%dir %{_libdir}/qml/org/hawaii/private/notifications
-%{_sysconfdir}/xdg/autostart/hawaii-shell-desktop.desktop
-%{_sysconfdir}/xdg/menus/hawaii-applications.menu
-%{_sysconfdir}/xdg/plasma-workspace/env/hawaii.sh
-%{_bindir}/ksetcursortheme
-%{_bindir}/ksetdefaultsettings
-%{_prefix}/lib/systemd/user/hawaii-*.service
-%{_prefix}/lib/systemd/user/hawaii.target
-%{_prefix}/lib/systemd/user/baloo_file.service
-%{_prefix}/lib/systemd/user/kdeinit5.service
-%{_prefix}/lib/systemd/user/krunner.service
-%{_prefix}/lib/systemd/user/ksmserver5.service
-%{_prefix}/lib/systemd/user/kwin_x11.service
-%{_prefix}/lib/systemd/user/plasma-desktop-shell.service
-%{_prefix}/lib/systemd/user/plasma5.target
-%{_libdir}/qml/org/hawaii/appchooser/private/*
-%{_libdir}/qml/org/hawaii/private/notifications/*
-%{_datadir}/kservices5/plasma-*org.hawaii.*.desktop
-%{_datadir}/desktop-directories/hawaii-*.directory
-%{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/contents/*
-%{_datadir}/plasma/look-and-feel/org.hawaii.lookandfeel.desktop/metadata.desktop
-%{_datadir}/plasma/plasmoids/org.hawaii.appchooser/metadata.desktop
-%{_datadir}/plasma/plasmoids/org.hawaii.appchooser/contents/*
-%{_datadir}/plasma/plasmoids/org.hawaii.notifications/metadata.desktop
-%{_datadir}/plasma/plasmoids/org.hawaii.notifications/contents/*
-%{_datadir}/plasma/shells/org.hawaii.shells.desktop/metadata.desktop
-%{_datadir}/plasma/shells/org.hawaii.shells.desktop/contents/*
-%{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.*/metadata.desktop
-%{_datadir}/plasma/wallpapers/org.hawaii.wallpapers.*/contents/*
-%{_datadir}/wayland-sessions/hawaii.desktop
-%{_datadir}/xsessions/hawaii.desktop
+%dir %{_libdir}/qml/org/hawaii/hardware
+%dir %{_libdir}/qml/org/hawaii/launcher
+%dir %{_libdir}/qml/org/hawaii/misc
+%dir %{_libdir}/qml/org/hawaii/mixer
+%dir %{_libdir}/qml/org/hawaii/mpris2
+%dir %{_libdir}/qml/org/hawaii/notifications
+%dir %{_libdir}/qml/org/hawaii/session
+%dir %{_libdir}/qml/org/hawaii/settings
+%dir %{_datadir}/greenisland/org.hawaii.desktop
+%dir %{_datadir}/hawaii/themes/Wind/
+
+%{_sysconfdir}/xdg/hawaii/shellrc
+%{_bindir}/hawaii
+%{_bindir}/hawaii-session
+%{_bindir}/starthawaii
+%{_libdir}/plugins/platformthemes/HawaiiPlatformTheme.so
+%{_libdir}/qml/Hawaii/Components/*.qml
+%{_libdir}/qml/Hawaii/Components/libcomponentsplugin.so
+%{_libdir}/qml/Hawaii/Components/plugins.qmltypes
+%{_libdir}/qml/Hawaii/Components/qmldir
+%{_libdir}/qml/Hawaii/Components/ListItems/*.qml
+%{_libdir}/qml/Hawaii/Components/ListItems/qmldir
+%{_libdir}/qml/Hawaii/Controls/*.qml
+%{_libdir}/qml/Hawaii/Controls/libcontrolsplugin.so
+%{_libdir}/qml/Hawaii/Controls/plugins.qmltypes
+%{_libdir}/qml/Hawaii/Controls/qmldir
+%{_libdir}/qml/Hawaii/Effects/*.qml
+%{_libdir}/qml/Hawaii/Effects/qmldir
+%{_libdir}/qml/Hawaii/Themes/*.qml
+%{_libdir}/qml/Hawaii/Themes/libdeclarative_hawaiithemes.so
+%{_libdir}/qml/Hawaii/Themes/qmldir
+%{_libdir}/qml/QtQuick/Controls/Styles/Wind/*.qml
+%{_libdir}/qml/QtQuick/Controls/Styles/Wind/images/*.png
+%{_libdir}/qml/QtQuick/Controls/Styles/Wind/qmldir
+%{_libdir}/qml/org/hawaii/appchooser/libappchooserplugin.so
+%{_libdir}/qml/org/hawaii/appchooser/qmldir
+%{_libdir}/qml/org/hawaii/hardware/libhardwareplugin.so
+%{_libdir}/qml/org/hawaii/hardware/plugins.qmltypes
+%{_libdir}/qml/org/hawaii/hardware/qmldir
+%{_libdir}/qml/org/hawaii/launcher/liblauncherplugin.so
+%{_libdir}/qml/org/hawaii/launcher/qmldir
+%{_libdir}/qml/org/hawaii/misc/libmiscplugin.so
+%{_libdir}/qml/org/hawaii/misc/qmldir
+%{_libdir}/qml/org/hawaii/mixer/libmixerplugin.so
+%{_libdir}/qml/org/hawaii/mixer/qmldir
+%{_libdir}/qml/org/hawaii/mpris2/libmpris2plugin.so
+%{_libdir}/qml/org/hawaii/mpris2/plugins.qmltypes
+%{_libdir}/qml/org/hawaii/mpris2/qmldir
+%{_libdir}/qml/org/hawaii/notifications/libnotificationsplugin.so
+%{_libdir}/qml/org/hawaii/notifications/plugins.qmltypes
+%{_libdir}/qml/org/hawaii/notifications/qmldir
+%{_libdir}/qml/org/hawaii/session/libsessionplugin.so
+%{_libdir}/qml/org/hawaii/session/qmldir
+%{_libdir}/qml/org/hawaii/settings/libsettingsplugin.so
+%{_libdir}/qml/org/hawaii/settings/plugins.qmltypes
+%{_libdir}/qml/org/hawaii/settings/qmldir
+%{_datadir}/greenisland/org.hawaii.desktop/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/components/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/controlcenter/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/decoration/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/decoration/graphics/dropshadow.png
+%{_datadir}/greenisland/org.hawaii.desktop/decoration/graphics/dropshadow.sci
+%{_datadir}/greenisland/org.hawaii.desktop/desktop/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/effects/presentwindowsgrid/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/effects/revealdesktop/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/images/CREDITS
+%{_datadir}/greenisland/org.hawaii.desktop/images/corner-ripple-ltr.png
+%{_datadir}/greenisland/org.hawaii.desktop/images/corner-ripple-rtl.png
+%{_datadir}/greenisland/org.hawaii.desktop/images/wallpaper.png
+%{_datadir}/greenisland/org.hawaii.desktop/indicators/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/indicators/appchooser/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/indicators/events/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/indicators/network/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/indicators/power/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/indicators/sound/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/launcher/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/overlays/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/qmldir
+%{_datadir}/greenisland/org.hawaii.desktop/windows/*.qml
+%{_datadir}/greenisland/org.hawaii.desktop/windows/*.js
+%{_datadir}/hawaii/themes/Wind/*.qml
+%{_datadir}/hawaii/themes/Wind/*.ini
 
 %files sddm-theme
 %dir %{_datadir}/sddm/themes/mauiproject
