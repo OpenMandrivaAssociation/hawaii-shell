@@ -9,6 +9,7 @@ License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
 Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.gz
+Patch0:		0001-Fix-Wayland-protocols-build-on-compilers-other-than-.patch
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
@@ -71,7 +72,7 @@ Hawaii theme for SDDM display manager.
 
 %prep
 %setup -q
-
+%apply_patches
 %build
 %cmake_qt5 -DENABLE_SYSTEMD:BOOL=ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DENABLE_MAINLINE_QTXDG:BOOL=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
 %make
