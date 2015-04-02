@@ -35,7 +35,6 @@ BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
-BuildRequires:	pkgconfig(libqtxdg)
 
 Requires:	weston
 Requires:	dbus-x11
