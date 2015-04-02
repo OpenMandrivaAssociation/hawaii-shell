@@ -107,9 +107,9 @@ netbook and tablet and QML plugins.
 %{_bindir}/hawaii
 %{_bindir}/hawaii-session
 %{_bindir}/starthawaii
-%{_userunitdir}/user/hawaii-kms.service
-%{_userunitdir}/user/hawaii-nested.service
-%{_userunitdir}/user/hawaii.target
+%{_userunitdir}/hawaii-kms.service
+%{_userunitdir}/hawaii-nested.service
+%{_userunitdir}/hawaii.target
 %{_libdir}/plugins/platformthemes/HawaiiPlatformTheme.so
 %{_libdir}/qml/Hawaii/Components/*.qml
 %{_libdir}/qml/Hawaii/Components/libcomponentsplugin.so
