@@ -56,6 +56,7 @@ Requires:	qt5-qttools
 Requires:	qt5-qttools-qtdbus
 Requires(post,postun,preun):	rpm-helper
 Requires(post,preun):	update-alternatives
+%rename hawaii-shell-sddm-theme < 0.4.0
 
 %track
 prog %{name} = {
@@ -65,39 +66,22 @@ prog %{name} = {
 }
 
 %description
-Hawaii shell.
+This is the Hawaii desktop environment shell.
 
-%package sddm-theme
-Summary:	Hawaii theme for SDDM
-Group:		Graphical desktop/Other
-Requires:	sddm
-Requires:	hawaii-shell = %{EVRD}
-
-%description sddm-theme
-Hawaii theme for SDDM display manager.
+It contains a Qt platform theme plugin,
+shells for different form factors such as desktop,
+netbook and tablet and QML plugins.
 
 %prep
 %setup -q
 %apply_patches
+
 %build
 %cmake_qt5 -DENABLE_SYSTEMD:BOOL=ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DENABLE_MAINLINE_QTXDG:BOOL=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
 %make
 
 %install
 %makeinstall_std -C build
-
-%post
-%systemd_post hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
-%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop default.desktop %{_datadir}/xsessions/hawaii.desktop 11
-
-%postun
-%systemd_postun hawaii-notifications-daemon hawaii-polkit-agent hawaii-shell
-
-%preun
-%systemd_preun
-if [ $1 -eq 0 ]; then
-    %{_sbindir}/update-alternatives --remove default.desktop %{_datadir}/xsessions/hawaii.desktop
-fi
 
 %files
 %dir %{_sysconfdir}/xdg/hawaii
@@ -118,13 +102,14 @@ fi
 %dir %{_libdir}/qml/org/hawaii/notifications
 %dir %{_libdir}/qml/org/hawaii/session
 %dir %{_libdir}/qml/org/hawaii/settings
-%dir %{_datadir}/greenisland/org.hawaii.desktop
 %dir %{_datadir}/hawaii/themes/Wind/
-
 %{_sysconfdir}/xdg/hawaii/shellrc
 %{_bindir}/hawaii
 %{_bindir}/hawaii-session
 %{_bindir}/starthawaii
+%{_userunitdir}/user/hawaii-kms.service
+%{_userunitdir}/user/hawaii-nested.service
+%{_userunitdir}/user/hawaii.target
 %{_libdir}/plugins/platformthemes/HawaiiPlatformTheme.so
 %{_libdir}/qml/Hawaii/Components/*.qml
 %{_libdir}/qml/Hawaii/Components/libcomponentsplugin.so
@@ -166,39 +151,7 @@ fi
 %{_libdir}/qml/org/hawaii/settings/libsettingsplugin.so
 %{_libdir}/qml/org/hawaii/settings/plugins.qmltypes
 %{_libdir}/qml/org/hawaii/settings/qmldir
-%{_datadir}/greenisland/org.hawaii.desktop/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/components/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/controlcenter/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/decoration/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/decoration/graphics/dropshadow.png
-%{_datadir}/greenisland/org.hawaii.desktop/decoration/graphics/dropshadow.sci
-%{_datadir}/greenisland/org.hawaii.desktop/desktop/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/effects/presentwindowsgrid/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/effects/revealdesktop/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/images/CREDITS
-%{_datadir}/greenisland/org.hawaii.desktop/images/corner-ripple-ltr.png
-%{_datadir}/greenisland/org.hawaii.desktop/images/corner-ripple-rtl.png
-%{_datadir}/greenisland/org.hawaii.desktop/images/wallpaper.png
-%{_datadir}/greenisland/org.hawaii.desktop/indicators/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/indicators/appchooser/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/indicators/events/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/indicators/network/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/indicators/power/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/indicators/sound/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/launcher/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/overlays/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/qmldir
-%{_datadir}/greenisland/org.hawaii.desktop/windows/*.qml
-%{_datadir}/greenisland/org.hawaii.desktop/windows/*.js
+%{_datadir}/greenisland/org.hawaii.desktop
 %{_datadir}/hawaii/themes/Wind/*.qml
 %{_datadir}/hawaii/themes/Wind/*.ini
-
-%files sddm-theme
-%dir %{_datadir}/sddm/themes/mauiproject
-%dir %{_datadir}/sddm/themes/mauiproject/components
-%{_datadir}/sddm/themes/mauiproject/README
-%{_datadir}/sddm/themes/mauiproject/*.qml
-%{_datadir}/sddm/themes/mauiproject/*.png
-%{_datadir}/sddm/themes/mauiproject/*.conf
-%{_datadir}/sddm/themes/mauiproject/*.desktop
-%{_datadir}/sddm/themes/mauiproject/components/*
+%{_datadir}/wayland-sessions/hawaii.desktop
