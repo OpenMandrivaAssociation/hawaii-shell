@@ -3,38 +3,27 @@
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.3.90
+Version:	0.4.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 URL:		http://www.maui-project.org
 Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
-BuildRequires:	qt5-devel
-BuildRequires:	libhawaii-devel
-BuildRequires:	pkgconfig(alsa)
-BuildRequires:	cmake(QtConfiguration)
-BuildRequires:	cmake(QtAccountsService)
 BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5DBus)
+BuildRequires:	cmake(Qt5Xml)
+BuildRequires:	cmake(Qt5Gui)
+BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(Qt5Qml)
+BuildRequires:	cmake(Qt5Quick)
+BuildRequires:	cmake(GreenIsland)
 BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5CoreAddons)
-BuildRequires:	cmake(KF5KIO)
-BuildRequires:	cmake(KF5Plasma)
 BuildRequires:	cmake(KF5Solid)
-BuildRequires:	cmake(KF5Runner)
-BuildRequires:	cmake(KF5Service)
-BuildRequires:	cmake(KF5Wayland)
-BuildRequires:	cmake(KF5KDELibs4Support)
-BuildRequires:	cmake(KF5I18n)
-BuildRequires:	cmake(KF5PlasmaQuick)
-BuildRequires:  cmake(LibKWorkspace)
+BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(polkit-qt5-1)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5DBus)
-BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5Qml)
-BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
 BuildRequires:	pkgconfig(qt5xdg)
@@ -46,13 +35,12 @@ BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
 BuildRequires:	pkgconfig(libqtxdg)
-#BuildRequires:  greenisland-devel
 
 Requires:	weston
 Requires:	dbus-x11
-Requires:	hawaii-widget-styles >= 0.2.0
+Requires:	hawaii-widget-styles >= 0.4.0
 #Requires:	greenisland >= 0.3.0
-Requires:	fluid >= 0.3.0
+#Requires:	fluid >= 0.3.0
 Requires:	%{_lib}qt5gui5-x11
 Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
