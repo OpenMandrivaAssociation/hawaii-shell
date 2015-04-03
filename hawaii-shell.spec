@@ -1,15 +1,16 @@
 %define Werror_cflags %nil
 %define _disable_ld_no_undefined 1
+%define snap 20150403
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.4.0
-Release:	1
+Release:	0.%{snap}.2
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
-Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.gz
-Patch0:		0001-Fix-Wayland-protocols-build-on-compilers-other-than-.patch
+# git archive --format=tar --prefix=hawaii-shell-0.4.0-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.0-$(date +%Y%m%d).tar.xz
+Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/v%{version}-%{snap}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
@@ -60,8 +61,8 @@ Requires(post,preun):	update-alternatives
 
 %track
 prog %{name} = {
-    url = http://downloads.sourceforge.net/project/mauios/hawaii/
-    regex = "%{name}-(__VER__)\.tar\.gz"
+    url = https://github.com/hawaii-desktop/%{name}/archive/
+    regex = "v(__VER__)\.tar\.gz"
     version = %{version}
 }
 
@@ -73,7 +74,7 @@ shells for different form factors such as desktop,
 netbook and tablet and QML plugins.
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}-%{snap}
 %apply_patches
 
 %build
