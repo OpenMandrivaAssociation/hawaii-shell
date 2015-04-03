@@ -5,9 +5,9 @@ Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.4.0
 Release:	1
-License:	GPLv2+ and LGPLv2.1+
+License:	GPLv2+
 Group:		Graphical desktop/Other
-URL:		https://hawaii-desktop.github.io
+URL:		http://www.maui-project.org
 Source0:	http://downloads.sourceforge.net/project/mauios/hawaii/%{name}/%{name}-%{version}.tar.gz
 Patch0:		0001-Fix-Wayland-protocols-build-on-compilers-other-than-.patch
 BuildRequires:	cmake
