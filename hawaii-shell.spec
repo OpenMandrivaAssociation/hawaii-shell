@@ -24,21 +24,12 @@ BuildRequires:	cmake(GreenIsland)
 BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5CoreAddons)
 BuildRequires:	cmake(KF5Solid)
-BuildRequires:	cmake(KF5KDELibs4Support)
-BuildRequires:	cmake(KF5KIO)
-BuildRequires:	cmake(KF5Runner)
-BuildRequires:	cmake(KF5Service)
-BuildRequires:	cmake(KF5Wayland)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(polkit-qt5-1)
-BuildRequires:  pkgconfig(Qt5Compositor) >= 5.4.0
+BuildRequires:	pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
 BuildRequires:	pkgconfig(Qt5Xdg)
-BuildRequires:	pkgconfig(weston)
-BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(wayland-client)
-BuildRequires:	pkgconfig(wayland-server)
-BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
@@ -78,7 +69,9 @@ netbook and tablet and QML plugins.
 %apply_patches
 
 %build
-%cmake_qt5 -DENABLE_SYSTEMD:BOOL=ON -DQTWAYLAND_SCANNER_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner -DENABLE_MAINLINE_QTXDG:BOOL=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
+%cmake_qt5 \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DQtWaylandScanner_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner
 %make
 
 %install
