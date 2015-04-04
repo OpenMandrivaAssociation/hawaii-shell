@@ -10,7 +10,7 @@ License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
 # git archive --format=tar --prefix=hawaii-shell-0.4.0-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.0-$(date +%Y%m%d).tar.xz
-Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/v%{version}-%{snap}.tar.xz
+Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
