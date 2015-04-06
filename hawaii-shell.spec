@@ -1,15 +1,15 @@
 %define Werror_cflags %nil
 %define _disable_ld_no_undefined 1
-%define snap 20150403
+%define snap 20150406
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.4.0
-Release:	0.%{snap}.2
+Version:	0.4.90
+Release:	0.%{snap}.1
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
-# git archive --format=tar --prefix=hawaii-shell-0.4.0-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.0-$(date +%Y%m%d).tar.xz
+# git archive --format=tar --prefix=hawaii-shell-0.4.90-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.90-$(date +%Y%m%d).tar.xz
 Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
