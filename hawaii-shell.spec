@@ -87,7 +87,6 @@ netbook and tablet and QML plugins.
 %dir %{_libdir}/qt5/qml/Hawaii/Themes
 %dir %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/
 %dir %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/images
-%dir %{_libdir}/qt5/qml/org/hawaii/appchooser
 %dir %{_libdir}/qt5/qml/org/hawaii/hardware
 %dir %{_libdir}/qt5/qml/org/hawaii/launcher
 %dir %{_libdir}/qt5/qml/org/hawaii/misc
@@ -102,8 +101,6 @@ netbook and tablet and QML plugins.
 %{_bindir}/hawaii-session
 %{_bindir}/starthawaii
 %{_userunitdir}/hawaii.service
-%{_userunitdir}/hawaii-kms.service
-%{_userunitdir}/hawaii-nested.service
 %{_userunitdir}/hawaii.target
 %{_libdir}/qt5/plugins/platformthemes/HawaiiPlatformTheme.so
 %{_libdir}/qt5/qml/Hawaii/Components/*.qml
@@ -124,8 +121,6 @@ netbook and tablet and QML plugins.
 %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/*.qml
 %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/images/*.png
 %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/qmldir
-%{_libdir}/qt5/qml/org/hawaii/appchooser/libappchooserplugin.so
-%{_libdir}/qt5/qml/org/hawaii/appchooser/qmldir
 %{_libdir}/qt5/qml/org/hawaii/hardware/libhardwareplugin.so
 %{_libdir}/qt5/qml/org/hawaii/hardware/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/hardware/qmldir
