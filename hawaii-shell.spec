@@ -79,72 +79,73 @@ netbook and tablet and QML plugins.
 
 %files
 %dir %{_sysconfdir}/xdg/hawaii
-%dir %{_libdir}/qml/Hawaii
-%dir %{_libdir}/qml/Hawaii/Components
-%dir %{_libdir}/qml/Hawaii/Components/ListItems
-%dir %{_libdir}/qml/Hawaii/Controls/
-%dir %{_libdir}/qml/Hawaii/Effects
-%dir %{_libdir}/qml/Hawaii/Themes
-%dir %{_libdir}/qml/QtQuick/Controls/Styles/Wind/
-%dir %{_libdir}/qml/QtQuick/Controls/Styles/Wind/images
-%dir %{_libdir}/qml/org/hawaii/appchooser
-%dir %{_libdir}/qml/org/hawaii/hardware
-%dir %{_libdir}/qml/org/hawaii/launcher
-%dir %{_libdir}/qml/org/hawaii/misc
-%dir %{_libdir}/qml/org/hawaii/mixer
-%dir %{_libdir}/qml/org/hawaii/mpris2
-%dir %{_libdir}/qml/org/hawaii/notifications
-%dir %{_libdir}/qml/org/hawaii/session
-%dir %{_libdir}/qml/org/hawaii/settings
+%dir %{_libdir}/qt5/qml/Hawaii
+%dir %{_libdir}/qt5/qml/Hawaii/Components
+%dir %{_libdir}/qt5/qml/Hawaii/Components/ListItems
+%dir %{_libdir}/qt5/qml/Hawaii/Controls/
+%dir %{_libdir}/qt5/qml/Hawaii/Effects
+%dir %{_libdir}/qt5/qml/Hawaii/Themes
+%dir %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/
+%dir %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/images
+%dir %{_libdir}/qt5/qml/org/hawaii/appchooser
+%dir %{_libdir}/qt5/qml/org/hawaii/hardware
+%dir %{_libdir}/qt5/qml/org/hawaii/launcher
+%dir %{_libdir}/qt5/qml/org/hawaii/misc
+%dir %{_libdir}/qt5/qml/org/hawaii/mixer
+%dir %{_libdir}/qt5/qml/org/hawaii/mpris2
+%dir %{_libdir}/qt5/qml/org/hawaii/notifications
+%dir %{_libdir}/qt5/qml/org/hawaii/session
+%dir %{_libdir}/qt5/qml/org/hawaii/settings
 %dir %{_datadir}/hawaii/themes/Wind/
 %{_sysconfdir}/xdg/hawaii/shellrc
 %{_bindir}/hawaii
 %{_bindir}/hawaii-session
 %{_bindir}/starthawaii
+%{_userunitdir}/hawaii.service
 %{_userunitdir}/hawaii-kms.service
 %{_userunitdir}/hawaii-nested.service
 %{_userunitdir}/hawaii.target
-%{_libdir}/plugins/platformthemes/HawaiiPlatformTheme.so
-%{_libdir}/qml/Hawaii/Components/*.qml
-%{_libdir}/qml/Hawaii/Components/libcomponentsplugin.so
-%{_libdir}/qml/Hawaii/Components/plugins.qmltypes
-%{_libdir}/qml/Hawaii/Components/qmldir
-%{_libdir}/qml/Hawaii/Components/ListItems/*.qml
-%{_libdir}/qml/Hawaii/Components/ListItems/qmldir
-%{_libdir}/qml/Hawaii/Controls/*.qml
-%{_libdir}/qml/Hawaii/Controls/libcontrolsplugin.so
-%{_libdir}/qml/Hawaii/Controls/plugins.qmltypes
-%{_libdir}/qml/Hawaii/Controls/qmldir
-%{_libdir}/qml/Hawaii/Effects/*.qml
-%{_libdir}/qml/Hawaii/Effects/qmldir
-%{_libdir}/qml/Hawaii/Themes/*.qml
-%{_libdir}/qml/Hawaii/Themes/libdeclarative_hawaiithemes.so
-%{_libdir}/qml/Hawaii/Themes/qmldir
-%{_libdir}/qml/QtQuick/Controls/Styles/Wind/*.qml
-%{_libdir}/qml/QtQuick/Controls/Styles/Wind/images/*.png
-%{_libdir}/qml/QtQuick/Controls/Styles/Wind/qmldir
-%{_libdir}/qml/org/hawaii/appchooser/libappchooserplugin.so
-%{_libdir}/qml/org/hawaii/appchooser/qmldir
-%{_libdir}/qml/org/hawaii/hardware/libhardwareplugin.so
-%{_libdir}/qml/org/hawaii/hardware/plugins.qmltypes
-%{_libdir}/qml/org/hawaii/hardware/qmldir
-%{_libdir}/qml/org/hawaii/launcher/liblauncherplugin.so
-%{_libdir}/qml/org/hawaii/launcher/qmldir
-%{_libdir}/qml/org/hawaii/misc/libmiscplugin.so
-%{_libdir}/qml/org/hawaii/misc/qmldir
-%{_libdir}/qml/org/hawaii/mixer/libmixerplugin.so
-%{_libdir}/qml/org/hawaii/mixer/qmldir
-%{_libdir}/qml/org/hawaii/mpris2/libmpris2plugin.so
-%{_libdir}/qml/org/hawaii/mpris2/plugins.qmltypes
-%{_libdir}/qml/org/hawaii/mpris2/qmldir
-%{_libdir}/qml/org/hawaii/notifications/libnotificationsplugin.so
-%{_libdir}/qml/org/hawaii/notifications/plugins.qmltypes
-%{_libdir}/qml/org/hawaii/notifications/qmldir
-%{_libdir}/qml/org/hawaii/session/libsessionplugin.so
-%{_libdir}/qml/org/hawaii/session/qmldir
-%{_libdir}/qml/org/hawaii/settings/libsettingsplugin.so
-%{_libdir}/qml/org/hawaii/settings/plugins.qmltypes
-%{_libdir}/qml/org/hawaii/settings/qmldir
+%{_libdir}/qt5/plugins/platformthemes/HawaiiPlatformTheme.so
+%{_libdir}/qt5/qml/Hawaii/Components/*.qml
+%{_libdir}/qt5/qml/Hawaii/Components/libcomponentsplugin.so
+%{_libdir}/qt5/qml/Hawaii/Components/plugins.qmltypes
+%{_libdir}/qt5/qml/Hawaii/Components/qmldir
+%{_libdir}/qt5/qml/Hawaii/Components/ListItems/*.qml
+%{_libdir}/qt5/qml/Hawaii/Components/ListItems/qmldir
+%{_libdir}/qt5/qml/Hawaii/Controls/*.qml
+%{_libdir}/qt5/qml/Hawaii/Controls/libcontrolsplugin.so
+%{_libdir}/qt5/qml/Hawaii/Controls/plugins.qmltypes
+%{_libdir}/qt5/qml/Hawaii/Controls/qmldir
+%{_libdir}/qt5/qml/Hawaii/Effects/*.qml
+%{_libdir}/qt5/qml/Hawaii/Effects/qmldir
+%{_libdir}/qt5/qml/Hawaii/Themes/*.qml
+%{_libdir}/qt5/qml/Hawaii/Themes/libdeclarative_hawaiithemes.so
+%{_libdir}/qt5/qml/Hawaii/Themes/qmldir
+%{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/*.qml
+%{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/images/*.png
+%{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/qmldir
+%{_libdir}/qt5/qml/org/hawaii/appchooser/libappchooserplugin.so
+%{_libdir}/qt5/qml/org/hawaii/appchooser/qmldir
+%{_libdir}/qt5/qml/org/hawaii/hardware/libhardwareplugin.so
+%{_libdir}/qt5/qml/org/hawaii/hardware/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaii/hardware/qmldir
+%{_libdir}/qt5/qml/org/hawaii/launcher/liblauncherplugin.so
+%{_libdir}/qt5/qml/org/hawaii/launcher/qmldir
+%{_libdir}/qt5/qml/org/hawaii/misc/libmiscplugin.so
+%{_libdir}/qt5/qml/org/hawaii/misc/qmldir
+%{_libdir}/qt5/qml/org/hawaii/mixer/libmixerplugin.so
+%{_libdir}/qt5/qml/org/hawaii/mixer/qmldir
+%{_libdir}/qt5/qml/org/hawaii/mpris2/libmpris2plugin.so
+%{_libdir}/qt5/qml/org/hawaii/mpris2/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaii/mpris2/qmldir
+%{_libdir}/qt5/qml/org/hawaii/notifications/libnotificationsplugin.so
+%{_libdir}/qt5/qml/org/hawaii/notifications/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaii/notifications/qmldir
+%{_libdir}/qt5/qml/org/hawaii/session/libsessionplugin.so
+%{_libdir}/qt5/qml/org/hawaii/session/qmldir
+%{_libdir}/qt5/qml/org/hawaii/settings/libsettingsplugin.so
+%{_libdir}/qt5/qml/org/hawaii/settings/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaii/settings/qmldir
 %{_datadir}/greenisland/org.hawaii.desktop
 %{_datadir}/hawaii/themes/Wind/*.qml
 %{_datadir}/hawaii/themes/Wind/*.ini
