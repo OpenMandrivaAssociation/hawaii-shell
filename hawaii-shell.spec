@@ -4,13 +4,14 @@
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.4.90
-Release:	0.%{snap}.1
+Version:	0.4.92
+Release:	0.1
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
 # git archive --format=tar --prefix=hawaii-shell-0.4.90-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.90-$(date +%Y%m%d).tar.xz
-Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
+#Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
+Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
@@ -65,13 +66,14 @@ shells for different form factors such as desktop,
 netbook and tablet and QML plugins.
 
 %prep
-%setup -qn %{name}-%{version}-%{snap}
+%setup -qn %{name}-%{version}
 %apply_patches
 
 %build
 %cmake_qt5 \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DQtWaylandScanner_EXECUTABLE=%{_libdir}/qt5/bin/qtwaylandscanner
+
 %make
 
 %install
