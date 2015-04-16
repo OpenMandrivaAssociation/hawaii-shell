@@ -128,6 +128,7 @@ netbook and tablet and QML plugins.
 %{_libdir}/qt5/qml/org/hawaii/hardware/qmldir
 %{_libdir}/qt5/qml/org/hawaii/launcher/liblauncherplugin.so
 %{_libdir}/qt5/qml/org/hawaii/launcher/qmldir
+%{_libdir}/qt5/qml/org/hawaii/launcher/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/misc/libmiscplugin.so
 %{_libdir}/qt5/qml/org/hawaii/misc/qmldir
 %{_libdir}/qt5/qml/org/hawaii/mixer/libmixerplugin.so
