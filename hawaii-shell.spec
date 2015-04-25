@@ -1,17 +1,17 @@
 %define Werror_cflags %nil
 %define _disable_ld_no_undefined 1
-%define snap 20150406
+%define snap 20150425
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.4.92
-Release:	0.1
+Release:	0.%{snap}.2
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
-# git archive --format=tar --prefix=hawaii-shell-0.4.90-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.90-$(date +%Y%m%d).tar.xz
-#Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
-Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}.tar.gz
+# git archive --format=tar --prefix=hawaii-shell-0.4.92-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.92-$(date +%Y%m%d).tar.xz
+Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
+#Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
@@ -66,7 +66,7 @@ shells for different form factors such as desktop,
 netbook and tablet and QML plugins.
 
 %prep
-%setup -qn %{name}-%{version}
+%setup -qn %{name}-%{version}-%{snap}
 %apply_patches
 
 %build
