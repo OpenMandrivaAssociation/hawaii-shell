@@ -98,6 +98,7 @@ netbook and tablet and QML plugins.
 %dir %{_libdir}/qt5/qml/org/hawaii/session
 %dir %{_libdir}/qt5/qml/org/hawaii/settings
 %dir %{_datadir}/hawaii/themes/Wind/
+%dir %{_datadir}/hawaii/themes/Wind/images
 %{_sysconfdir}/xdg/hawaii/shellrc
 %{_bindir}/hawaii
 %{_bindir}/hawaii-session
@@ -147,4 +148,6 @@ netbook and tablet and QML plugins.
 %{_datadir}/greenisland/org.hawaii.desktop
 %{_datadir}/hawaii/themes/Wind/*.qml
 %{_datadir}/hawaii/themes/Wind/*.ini
+%{_datadir}/hawaii/themes/Wind/images/*.png
+%{_datadir}/hawaii/themes/Wind/images/*.sci
 %{_datadir}/wayland-sessions/hawaii.desktop
