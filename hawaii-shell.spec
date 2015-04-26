@@ -5,7 +5,7 @@
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.4.93
-Release:	0.%{snap}.2
+Release:	0.%{snap}.3
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
@@ -26,15 +26,19 @@ BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5CoreAddons)
 BuildRequires:	cmake(KF5Solid)
 BuildRequires:	cmake(KF5NetworkManagerQt)
+BuildRequires:	cmake(KF5ModemManagerQt)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(polkit-qt5-1)
 BuildRequires:	pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
 BuildRequires:	pkgconfig(Qt5Xdg)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(libnm)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
+BuildRequires:	pkgconfig(mobile-broadband-provider-info) 
 BuildRequires:	pam-devel
 
 Requires:	weston
