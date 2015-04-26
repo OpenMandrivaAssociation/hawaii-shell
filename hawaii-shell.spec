@@ -25,6 +25,7 @@ BuildRequires:	cmake(GreenIsland)
 BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5CoreAddons)
 BuildRequires:	cmake(KF5Solid)
+BuildRequires:	cmake(KF5NetworkManagerQt)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(polkit-qt5-1)
 BuildRequires:	pkgconfig(Qt5Compositor) >= 5.4.0
@@ -44,7 +45,6 @@ Requires:	%{_lib}qt5gui5-x11
 Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
 Requires:	%{_lib}qt5dbus5
-Requires:	plasma-workspace
 Requires:	qt5-qttools
 Requires:	qt5-qttools-qtdbus
 Requires(post,postun,preun):	rpm-helper
