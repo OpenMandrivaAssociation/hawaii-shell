@@ -1,15 +1,15 @@
 %define Werror_cflags %nil
 %define _disable_ld_no_undefined 1
-%define snap 20150425
+%define snap 20150426
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.4.92
+Version:	0.4.93
 Release:	0.%{snap}.2
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
-# git archive --format=tar --prefix=hawaii-shell-0.4.92-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.92-$(date +%Y%m%d).tar.xz
+# git archive --format=tar --prefix=hawaii-shell-0.4.93-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.93-$(date +%Y%m%d).tar.xz
 Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
 #Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
@@ -40,7 +40,7 @@ BuildRequires:	pam-devel
 Requires:	weston
 Requires:	dbus-x11
 Requires:	hawaii-widget-styles >= 0.4.0
-Requires:	greenisland >= 0.5.90
+Requires:	greenisland >= 0.5.93
 Requires:	%{_lib}qt5gui5-x11
 Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
