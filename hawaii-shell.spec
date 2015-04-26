@@ -141,6 +141,9 @@ netbook and tablet and QML plugins.
 %{_libdir}/qt5/qml/org/hawaii/mpris2/libmpris2plugin.so
 %{_libdir}/qt5/qml/org/hawaii/mpris2/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/mpris2/qmldir
+%{_libdir}/qt5/qml/org/hawaii/networkmanager/libnmplugin.so
+%{_libdir}/qt5/qml/org/hawaii/networkmanager/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaii/networkmanager/qmldir
 %{_libdir}/qt5/qml/org/hawaii/notifications/libnotificationsplugin.so
 %{_libdir}/qt5/qml/org/hawaii/notifications/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/notifications/qmldir
