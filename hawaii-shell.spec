@@ -2,6 +2,8 @@
 %define _disable_ld_no_undefined 1
 %define snap 20150505
 
+%define devname %mklibname Hawaii -d
+
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.4.93
@@ -55,6 +57,8 @@ Requires(post,postun,preun):	rpm-helper
 Requires(post,preun):	update-alternatives
 %rename hawaii-shell-sddm-theme < 0.4.0
 
+%libpackage Hawaii 0
+
 %track
 prog %{name} = {
     url = https://github.com/hawaii-desktop/%{name}/archive/
@@ -68,6 +72,20 @@ This is the Hawaii desktop environment shell.
 It contains a Qt platform theme plugin,
 shells for different form factors such as desktop,
 netbook and tablet and QML plugins.
+
+
+%package -n %{devname}
+Summary:	Development files for the %{name}
+Group:		Development/C++
+Requires:	%{mklibname Hawaii 0} = %{EVRD}
+
+%description -n %{devname}
+Development files for the %{name}.
+
+%files -n %{devname}
+%{_includedir}/*
+%{_libdir}/*.so
+%{_libdir}/cmake/Hawaii*
 
 %prep
 %setup -qn %{name}-%{version}-%{snap}
@@ -84,7 +102,6 @@ netbook and tablet and QML plugins.
 %makeinstall_std -C build
 
 %files
-%dir %{_sysconfdir}/xdg/hawaii
 %dir %{_libdir}/qt5/qml/Hawaii
 %dir %{_libdir}/qt5/qml/Hawaii/Components
 %dir %{_libdir}/qt5/qml/Hawaii/Components/ListItems
@@ -103,7 +120,7 @@ netbook and tablet and QML plugins.
 %dir %{_libdir}/qt5/qml/org/hawaii/settings
 %dir %{_datadir}/hawaii/themes/Wind/
 %dir %{_datadir}/hawaii/themes/Wind/images
-%{_sysconfdir}/xdg/hawaii/shellrc
+%{_sysconfdir}/xdg/menus/hawaii-applications.menu
 %{_bindir}/hawaii
 %{_bindir}/hawaii-session
 %{_bindir}/starthawaii
@@ -158,3 +175,5 @@ netbook and tablet and QML plugins.
 %{_datadir}/hawaii/themes/Wind/images/*.png
 %{_datadir}/hawaii/themes/Wind/images/*.sci
 %{_datadir}/wayland-sessions/hawaii.desktop
+%{_datadir}/desktop-directories/*.directory
+%{_datadir}/glib-2.0/schemas/org.hawaii.desktop.*.xml
