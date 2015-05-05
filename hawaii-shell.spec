@@ -1,11 +1,11 @@
 %define Werror_cflags %nil
 %define _disable_ld_no_undefined 1
-%define snap 20150426
+%define snap 20150505
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.4.93
-Release:	0.%{snap}.3
+Release:	0.%{snap}.1
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
