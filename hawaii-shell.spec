@@ -7,7 +7,7 @@
 Summary:	Hawaii shell
 Name:		hawaii-shell
 Version:	0.4.93
-Release:	0.%{snap}.1
+Release:	0.%{snap}.2
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
 URL:		https://hawaii-desktop.github.io
@@ -53,6 +53,7 @@ Requires:	%{_lib}qt5waylandcompositor5
 Requires:	%{_lib}qt5dbus5
 Requires:	qt5-qttools
 Requires:	qt5-qttools-qtdbus
+Requires:	qt5-qtwayland
 Requires(post,postun,preun):	rpm-helper
 Requires(post,preun):	update-alternatives
 %rename hawaii-shell-sddm-theme < 0.4.0
