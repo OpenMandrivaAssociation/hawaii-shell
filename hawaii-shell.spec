@@ -1,6 +1,6 @@
 %define Werror_cflags %nil
 %define _disable_ld_no_undefined 1
-%define snap 20150505
+%define snap 20150516
 
 %define devname %mklibname Hawaii -d
 
