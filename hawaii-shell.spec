@@ -167,7 +167,7 @@ Development files for the %{name}.
 %{_libdir}/qt5/qml/org/hawaii/settings/libsettingsplugin.so
 %{_libdir}/qt5/qml/org/hawaii/settings/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/settings/qmldir
-%{_datadir}/greenisland/shell/org.hawaii.desktop
+%{_datadir}/greenisland/shells/org.hawaii.desktop
 %{_datadir}/hawaii/themes/Wind/*.qml
 %{_datadir}/hawaii/themes/Wind/*.ini
 %{_datadir}/hawaii/themes/Wind/images/*.png
