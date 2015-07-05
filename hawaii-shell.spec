@@ -117,7 +117,6 @@ Development files for the %{name}.
 %dir %{_libdir}/qt5/qml/org/hawaii/mixer
 %dir %{_libdir}/qt5/qml/org/hawaii/mpris2
 %dir %{_libdir}/qt5/qml/org/hawaii/notifications
-%dir %{_libdir}/qt5/qml/org/hawaii/session
 %dir %{_libdir}/qt5/qml/org/hawaii/settings
 %dir %{_datadir}/hawaii/themes/Wind/
 %dir %{_datadir}/hawaii/themes/Wind/images
@@ -165,12 +164,10 @@ Development files for the %{name}.
 %{_libdir}/qt5/qml/org/hawaii/notifications/libnotificationsplugin.so
 %{_libdir}/qt5/qml/org/hawaii/notifications/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/notifications/qmldir
-%{_libdir}/qt5/qml/org/hawaii/session/libsessionplugin.so
-%{_libdir}/qt5/qml/org/hawaii/session/qmldir
 %{_libdir}/qt5/qml/org/hawaii/settings/libsettingsplugin.so
 %{_libdir}/qt5/qml/org/hawaii/settings/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/settings/qmldir
-%{_datadir}/greenisland/org.hawaii.desktop
+%{_datadir}/greenisland/shell/org.hawaii.desktop
 %{_datadir}/hawaii/themes/Wind/*.qml
 %{_datadir}/hawaii/themes/Wind/*.ini
 %{_datadir}/hawaii/themes/Wind/images/*.png
@@ -178,3 +175,5 @@ Development files for the %{name}.
 %{_datadir}/wayland-sessions/hawaii.desktop
 %{_datadir}/desktop-directories/*.directory
 %{_datadir}/glib-2.0/schemas/org.hawaii.desktop.*.xml
+%{_datadir}/hawaii/compositor
+%{_datadir}/sddm/themes/hawaii
