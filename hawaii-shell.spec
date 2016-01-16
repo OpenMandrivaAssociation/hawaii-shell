@@ -1,20 +1,19 @@
 %define Werror_cflags %nil
 %define _disable_ld_no_undefined 1
-%define snap 20150705
+%define snap %nil
 
 %define devname %mklibname Hawaii -d
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.4.94
-Release:	0.%{snap}.1
+Version:	0.6.0
+Release:	1
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
-URL:		https://hawaii-desktop.github.io
+URL:		http://hawaiios.org/
 # git archive --format=tar --prefix=hawaii-shell-0.4.93-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.93-$(date +%Y%m%d).tar.xz
-Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
-#Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}.tar.gz
-BuildRequires:	cmake
+#Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
+Source0:	https://github.com/hawaii-desktop/hawaii-shell/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5DBus)
@@ -45,8 +44,8 @@ BuildRequires:	pam-devel
 
 Requires:	weston
 Requires:	dbus-x11
-Requires:	hawaii-widget-styles >= 0.4.0
-Requires:	greenisland >= 0.5.93
+Requires:	hawaii-widget-styles >= 0.5.1
+Requires:	greenisland >= 0.7.0
 Requires:	%{_lib}qt5gui5-x11
 Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
@@ -63,7 +62,7 @@ Requires(post,preun):	update-alternatives
 %track
 prog %{name} = {
     url = https://github.com/hawaii-desktop/%{name}/archive/
-    regex = "v(__VER__)\.tar\.gz"
+    regex = "v(__VER__)\.tar\.xz"
     version = %{version}
 }
 
@@ -89,7 +88,7 @@ Development files for the %{name}.
 %{_libdir}/cmake/Hawaii*
 
 %prep
-%setup -qn %{name}-%{version}-%{snap}
+%setup -q
 %apply_patches
 
 %build
