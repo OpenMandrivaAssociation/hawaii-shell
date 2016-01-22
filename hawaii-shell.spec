@@ -29,6 +29,7 @@ BuildRequires:	cmake(KF5Solid)
 BuildRequires:	cmake(KF5NetworkManagerQt)
 BuildRequires:	cmake(KF5ModemManagerQt)
 BuildRequires:	cmake(GreenIsland)
+BuildRequires:	cmake(Hawaii)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(polkit-qt5-1)
 BuildRequires:	pkgconfig(Qt5Compositor) >= 5.4.0
