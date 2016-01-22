@@ -109,7 +109,6 @@ netbook and tablet and QML plugins.
 %dir %{_libdir}/qt5/qml/org/hawaiios/mixer
 %dir %{_libdir}/qt5/qml/org/hawaiios/mpris2
 %dir %{_libdir}/qt5/qml/org/hawaiios/notifications
-%dir %{_libdir}/qt5/qml/org/hawaiios/settings
 %dir %{_datadir}/hawaii/themes/Wind/
 %dir %{_datadir}/hawaii/themes/Wind/images
 %{_sysconfdir}/xdg/menus/hawaii-applications.menu
@@ -137,28 +136,25 @@ netbook and tablet and QML plugins.
 %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/*.qml
 %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/images/*.png
 %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/qmldir
-%{_libdir}/qt5/qml/org/hawaii/hardware/libhardwareplugin.so
-%{_libdir}/qt5/qml/org/hawaii/hardware/plugins.qmltypes
-%{_libdir}/qt5/qml/org/hawaii/hardware/qmldir
-%{_libdir}/qt5/qml/org/hawaii/launcher/liblauncherplugin.so
-%{_libdir}/qt5/qml/org/hawaii/launcher/qmldir
-%{_libdir}/qt5/qml/org/hawaii/launcher/plugins.qmltypes
-%{_libdir}/qt5/qml/org/hawaii/misc/libmiscplugin.so
-%{_libdir}/qt5/qml/org/hawaii/misc/qmldir
-%{_libdir}/qt5/qml/org/hawaii/mixer/libmixerplugin.so
-%{_libdir}/qt5/qml/org/hawaii/mixer/qmldir
-%{_libdir}/qt5/qml/org/hawaii/mpris2/libmpris2plugin.so
-%{_libdir}/qt5/qml/org/hawaii/mpris2/plugins.qmltypes
-%{_libdir}/qt5/qml/org/hawaii/mpris2/qmldir
-%{_libdir}/qt5/qml/org/hawaii/networkmanager/libnmplugin.so
-%{_libdir}/qt5/qml/org/hawaii/networkmanager/plugins.qmltypes
-%{_libdir}/qt5/qml/org/hawaii/networkmanager/qmldir
-%{_libdir}/qt5/qml/org/hawaii/notifications/libnotificationsplugin.so
-%{_libdir}/qt5/qml/org/hawaii/notifications/plugins.qmltypes
-%{_libdir}/qt5/qml/org/hawaii/notifications/qmldir
-%{_libdir}/qt5/qml/org/hawaii/settings/libsettingsplugin.so
-%{_libdir}/qt5/qml/org/hawaii/settings/plugins.qmltypes
-%{_libdir}/qt5/qml/org/hawaii/settings/qmldir
+%{_libdir}/qt5/qml/org/hawaiios/hardware/libhardwareplugin.so
+%{_libdir}/qt5/qml/org/hawaiios/hardware/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaiios/hardware/qmldir
+%{_libdir}/qt5/qml/org/hawaiios/launcher/liblauncherplugin.so
+%{_libdir}/qt5/qml/org/hawaiios/launcher/qmldir
+%{_libdir}/qt5/qml/org/hawaiios/launcher/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaiios/misc/libmiscplugin.so
+%{_libdir}/qt5/qml/org/hawaiios/misc/qmldir
+%{_libdir}/qt5/qml/org/hawaiios/mixer/libmixerplugin.so
+%{_libdir}/qt5/qml/org/hawaiios/mixer/qmldir
+%{_libdir}/qt5/qml/org/hawaiios/mpris2/libmpris2plugin.so
+%{_libdir}/qt5/qml/org/hawaiios/mpris2/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaiios/mpris2/qmldir
+%{_libdir}/qt5/qml/org/hawaiios/networkmanager/libnmplugin.so
+%{_libdir}/qt5/qml/org/hawaiios/networkmanager/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaiios/networkmanager/qmldir
+%{_libdir}/qt5/qml/org/hawaiios/notifications/libnotificationsplugin.so
+%{_libdir}/qt5/qml/org/hawaiios/notifications/plugins.qmltypes
+%{_libdir}/qt5/qml/org/hawaiios/notifications/qmldir
 %{_datadir}/greenisland/shells/org.hawaiios.desktop
 %{_datadir}/hawaii/themes/Wind/*.qml
 %{_datadir}/hawaii/themes/Wind/*.ini
@@ -167,5 +163,4 @@ netbook and tablet and QML plugins.
 %{_datadir}/wayland-sessions/hawaii.desktop
 %{_datadir}/desktop-directories/*.directory
 %{_datadir}/glib-2.0/schemas/org.hawaiios.desktop.*.xml
-%{_datadir}/hawaii/compositor
 %{_datadir}/sddm/themes/hawaii
