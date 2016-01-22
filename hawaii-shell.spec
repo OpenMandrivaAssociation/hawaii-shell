@@ -43,7 +43,8 @@ BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
-BuildRequires:	pkgconfig(mobile-broadband-provider-info) 
+BuildRequires:	pkgconfig(libpulse-mainloop-glib)
+BuildRequires:	pkgconfig(mobile-broadband-provider-info)
 BuildRequires:	pam-devel
 
 Requires:	weston
@@ -59,9 +60,11 @@ Requires:	qt5-qttools-qtdbus
 Requires:	qt5-qtwayland
 Requires(post,postun,preun):	rpm-helper
 Requires(post,preun):	update-alternatives
+Obsoletes:	%{mklibname Hawaii -d} < 0.6.0
+Provides:	%{mklibname Hawaii -d} = 0.6.0
+Obsoletes:	%{mklibname Hawaii 0} < 0.6.0
+Provides:	%{mklibname Hawaii 0} = 0.6.0
 %rename hawaii-shell-sddm-theme < 0.4.0
-
-%libpackage Hawaii 0
 
 %track
 prog %{name} = {
@@ -76,20 +79,6 @@ This is the Hawaii desktop environment shell.
 It contains a Qt platform theme plugin,
 shells for different form factors such as desktop,
 netbook and tablet and QML plugins.
-
-
-%package -n %{devname}
-Summary:	Development files for the %{name}
-Group:		Development/C++
-Requires:	%{mklibname Hawaii 0} = %{EVRD}
-
-%description -n %{devname}
-Development files for the %{name}.
-
-%files -n %{devname}
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/cmake/Hawaii*
 
 %prep
 %setup -q
@@ -114,13 +103,13 @@ Development files for the %{name}.
 %dir %{_libdir}/qt5/qml/Hawaii/Themes
 %dir %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/
 %dir %{_libdir}/qt5/qml/QtQuick/Controls/Styles/Wind/images
-%dir %{_libdir}/qt5/qml/org/hawaii/hardware
-%dir %{_libdir}/qt5/qml/org/hawaii/launcher
-%dir %{_libdir}/qt5/qml/org/hawaii/misc
-%dir %{_libdir}/qt5/qml/org/hawaii/mixer
-%dir %{_libdir}/qt5/qml/org/hawaii/mpris2
-%dir %{_libdir}/qt5/qml/org/hawaii/notifications
-%dir %{_libdir}/qt5/qml/org/hawaii/settings
+%dir %{_libdir}/qt5/qml/org/hawaiios/hardware
+%dir %{_libdir}/qt5/qml/org/hawaiios/launcher
+%dir %{_libdir}/qt5/qml/org/hawaiios/misc
+%dir %{_libdir}/qt5/qml/org/hawaiios/mixer
+%dir %{_libdir}/qt5/qml/org/hawaiios/mpris2
+%dir %{_libdir}/qt5/qml/org/hawaiios/notifications
+%dir %{_libdir}/qt5/qml/org/hawaiios/settings
 %dir %{_datadir}/hawaii/themes/Wind/
 %dir %{_datadir}/hawaii/themes/Wind/images
 %{_sysconfdir}/xdg/menus/hawaii-applications.menu
@@ -170,13 +159,13 @@ Development files for the %{name}.
 %{_libdir}/qt5/qml/org/hawaii/settings/libsettingsplugin.so
 %{_libdir}/qt5/qml/org/hawaii/settings/plugins.qmltypes
 %{_libdir}/qt5/qml/org/hawaii/settings/qmldir
-%{_datadir}/greenisland/shells/org.hawaii.desktop
+%{_datadir}/greenisland/shells/org.hawaiios.desktop
 %{_datadir}/hawaii/themes/Wind/*.qml
 %{_datadir}/hawaii/themes/Wind/*.ini
 %{_datadir}/hawaii/themes/Wind/images/*.png
 %{_datadir}/hawaii/themes/Wind/images/*.sci
 %{_datadir}/wayland-sessions/hawaii.desktop
 %{_datadir}/desktop-directories/*.directory
-%{_datadir}/glib-2.0/schemas/org.hawaii.desktop.*.xml
+%{_datadir}/glib-2.0/schemas/org.hawaiios.desktop.*.xml
 %{_datadir}/hawaii/compositor
 %{_datadir}/sddm/themes/hawaii
