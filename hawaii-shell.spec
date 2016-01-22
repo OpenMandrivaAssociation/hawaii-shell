@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(Qt5Compositor) >= 5.4.0
 BuildRequires:	pkgconfig(Qt5WaylandClient)
 BuildRequires:	pkgconfig(Qt5Xdg)
 BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(libnm)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(xkbcommon)
