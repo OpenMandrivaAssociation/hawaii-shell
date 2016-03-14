@@ -13,7 +13,7 @@ Group:		Graphical desktop/Other
 URL:		http://hawaiios.org/
 # git archive --format=tar --prefix=hawaii-shell-0.4.93-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.93-$(date +%Y%m%d).tar.xz
 #Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
-Source0:	https://github.com/hawaii-desktop/hawaii-shell/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source0:	https://github.com/hawaii-desktop/hawaii-shell/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5DBus)
