@@ -6,7 +6,7 @@
 
 Summary:	Hawaii shell
 Name:		hawaii-shell
-Version:	0.6.0
+Version:	0.6.90
 Release:	1
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
