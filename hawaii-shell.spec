@@ -41,16 +41,15 @@ BuildRequires:	pkgconfig(Qt5QuickTest)
 BuildRequires:	pkgconfig(libnm)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(xkbcommon)
-BuildRequires:	pkgconfig(systemd)
-BuildRequires:	pkgconfig(libsystemd-daemon)
+BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libpulse-mainloop-glib)
 BuildRequires:	pkgconfig(mobile-broadband-provider-info)
 BuildRequires:	pam-devel
 
 Requires:	weston
 Requires:	dbus-x11
-Requires:	hawaii-widget-styles >= 0.5.1
-Requires:	greenisland >= 0.7.0
+Requires:	hawaii-widget-styles >= 0.8.0
+Requires:	greenisland >= 0.8.1
 Requires:	%{_lib}qt5gui5-x11
 Requires:	%{_lib}qt5waylandclient5
 Requires:	%{_lib}qt5waylandcompositor5
