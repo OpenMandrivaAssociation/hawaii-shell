@@ -81,7 +81,7 @@ netbook and tablet and QML plugins.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake_qt5 \
