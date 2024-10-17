@@ -10,7 +10,7 @@ Version:	0.8.0
 Release:	1
 License:	GPLv2+ and LGPLv2.1+
 Group:		Graphical desktop/Other
-URL:		http://hawaiios.org/
+URL:		https://hawaiios.org/
 # git archive --format=tar --prefix=hawaii-shell-0.4.93-$(date +%Y%m%d)/ HEAD | xz -vf > hawaii-shell-0.4.93-$(date +%Y%m%d).tar.xz
 #Source0:	https://github.com/hawaii-desktop/hawaii-desktop/archive/%{name}-%{version}-%{snap}.tar.xz
 Source0:	https://github.com/hawaii-desktop/hawaii-shell/releases/download/v%{version}/%{name}-%{version}.tar.xz
